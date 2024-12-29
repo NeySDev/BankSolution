@@ -2,10 +2,12 @@
 
 User nelson = new User();
 
-nelson.ID = 1;
+nelson.Id = 1;
 nelson.Name = "Nelson";
 nelson.Email = "nelsonortiz102@gmail.com";
-nelson.Balance = 1000;
 nelson.RegisterDate = DateTime.Now;
 
 System.Console.WriteLine(nelson.ShowData());
+
+User yureli = new User(2, "Yureli", "yureliortiz@gmail.com", 100);
+System.Console.WriteLine(yureli.ShowData());
