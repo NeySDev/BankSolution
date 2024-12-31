@@ -7,7 +7,7 @@ nelson.Deposit(1000);
 System.Console.WriteLine(nelson.ShowData());
 
 nelson.Charge(2000);
-System.Console.WriteLine(nelson.ShowData());
+System.Console.WriteLine(nelson.ShowData("NO SE PUDO REALIZAR LA OPERACION"));
 
 // User yureli = new User(2, "Yureli", "yureliortiz@gmail.com", 100);
 // Console.WriteLine(yureli.ShowData());

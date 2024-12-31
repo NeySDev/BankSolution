@@ -31,6 +31,11 @@ public class User
         return $"=========================\nNombre: {this.Name}\nCorreo: {this.Email}\nSaldo: {this.Balance}\nFecha de registro: {this.RegisterDate}\n=========================\n";
     }
 
+    public string ShowData(string message)
+    {
+        return $"=========================\n{message} \nNombre: {this.Name}\nCorreo: {this.Email}\nSaldo: {this.Balance}\nFecha de registro: {this.RegisterDate}\n=========================\n";
+    }
+
     public void Deposit(decimal amount)
     {
         this.Balance += amount;
@@ -42,6 +47,22 @@ public class User
         {
             this.Balance -= amount;
         }
+    }
+
+    public void SetBalance(decimal amount)
+    {
+        decimal quantity = 0;
+
+        if (amount < 0)
+        {
+            quantity = 0;
+        }
+        else
+        {
+            quantity = amount;
+        }
+
+        this.Balance += quantity;
     }
     #endregion
 }
