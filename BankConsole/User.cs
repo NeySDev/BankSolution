@@ -2,17 +2,19 @@ namespace BankConsole;
 
 public class User
 {
-    public int Id { set; get; }
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public decimal Balance { get; set; }
-    public DateTime RegisterDate { get; set; }
+    #region Properties
+    private int Id { set; get; }
+    private string Name { get; set; }
+    private string Email { get; set; }
+    private decimal Balance { get; set; }
+    private DateTime RegisterDate { get; set; }
+    #endregion
 
+    #region Constructors
     public User()
     {
         this.Balance = 0;
     }
-
     public User(int Id, string Name, string Email, decimal Balance)
     {
         this.Id = Id;
@@ -21,9 +23,25 @@ public class User
         this.Balance = Balance;
         this.RegisterDate = DateTime.Now;
     }
+    #endregion
 
+    #region Methods
     public string ShowData()
     {
         return $"=========================\nNombre: {this.Name}\nCorreo: {this.Email}\nSaldo: {this.Balance}\nFecha de registro: {this.RegisterDate}\n=========================\n";
     }
+
+    public void Deposit(decimal amount)
+    {
+        this.Balance += amount;
+    }
+
+    public void Charge(decimal amount)
+    {
+        if (this.Balance >= amount)
+        {
+            this.Balance -= amount;
+        }
+    }
+    #endregion
 }

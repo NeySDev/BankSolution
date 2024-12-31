@@ -1,13 +1,13 @@
 ﻿using BankConsole;
 
-User nelson = new User();
+User nelson = new User(1, "Nelson", "nelsonortiz102@gmail.com", 100);
+Console.WriteLine(nelson.ShowData());
 
-nelson.Id = 1;
-nelson.Name = "Nelson";
-nelson.Email = "nelsonortiz102@gmail.com";
-nelson.RegisterDate = DateTime.Now;
-
+nelson.Deposit(1000);
 System.Console.WriteLine(nelson.ShowData());
 
-User yureli = new User(2, "Yureli", "yureliortiz@gmail.com", 100);
-System.Console.WriteLine(yureli.ShowData());
+nelson.Charge(2000);
+System.Console.WriteLine(nelson.ShowData());
+
+// User yureli = new User(2, "Yureli", "yureliortiz@gmail.com", 100);
+// Console.WriteLine(yureli.ShowData());
