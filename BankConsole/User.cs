@@ -20,7 +20,7 @@ public class User
         this.Id = Id;
         this.Name = Name;
         this.Email = Email;
-        this.Balance = Balance;
+        SetBalance(Balance);
         this.RegisterDate = DateTime.Now;
     }
     #endregion
