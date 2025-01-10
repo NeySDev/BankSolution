@@ -1,12 +1,19 @@
+using Newtonsoft.Json;
+
 namespace BankConsole;
 
 public class User
 {
     #region Properties
+    [JsonProperty]
     private int Id { set; get; }
+    [JsonProperty]
     private string Name { get; set; }
+    [JsonProperty]
     private string Email { get; set; }
+    [JsonProperty]
     private decimal Balance { get; set; }
+    [JsonProperty]
     private DateTime RegisterDate { get; set; }
     #endregion
 
