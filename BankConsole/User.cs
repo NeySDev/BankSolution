@@ -6,22 +6,18 @@ public class User
 {
     #region Properties
     [JsonProperty]
-    private int Id { set; get; }
+    protected int Id { set; get; }
     [JsonProperty]
-    private string Name { get; set; }
+    protected string Name { get; set; }
     [JsonProperty]
-    private string Email { get; set; }
+    protected string Email { get; set; }
     [JsonProperty]
-    private decimal Balance { get; set; }
+    protected decimal Balance { get; set; }
     [JsonProperty]
-    private DateTime RegisterDate { get; set; }
+    protected DateTime RegisterDate { get; set; }
     #endregion
 
     #region Constructors
-    public User()
-    {
-        this.Balance = 0;
-    }
     public User(int Id, string Name, string Email, decimal Balance)
     {
         this.Id = Id;
@@ -33,14 +29,14 @@ public class User
     #endregion
 
     #region Methods
-    public string ShowData()
+    public virtual string ShowData()
     {
-        return $"=========================\nNombre: {this.Name}\nCorreo: {this.Email}\nSaldo: {this.Balance}\nFecha de registro: {this.RegisterDate}\n=========================\n";
+        return $"\n======================================\nNombre: {this.Name}\nCorreo: {this.Email}\nSaldo: {this.Balance}\nFecha de registro: {this.RegisterDate.ToShortDateString()}";
     }
 
     public string ShowData(string message)
     {
-        return $"=========================\n{message} \nNombre: {this.Name}\nCorreo: {this.Email}\nSaldo: {this.Balance}\nFecha de registro: {this.RegisterDate}\n=========================\n";
+        return $"\n======================================\n{message} \nNombre: {this.Name}\nCorreo: {this.Email}\nSaldo: {this.Balance}\nFecha de registro: {this.RegisterDate}";
     }
 
     public void Deposit(decimal amount)
@@ -56,7 +52,7 @@ public class User
         }
     }
 
-    public void SetBalance(decimal amount)
+    public virtual void SetBalance(decimal amount)
     {
         decimal quantity = 0;
 
@@ -69,7 +65,7 @@ public class User
             quantity = amount;
         }
 
-        this.Balance += quantity;
+        Deposit(quantity);
     }
     #endregion
 }
