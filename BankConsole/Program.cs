@@ -20,7 +20,7 @@
 // Storage.AddUser(yureli);
 
 // ************************
-// HERENCIA
+// HERENCIA / POLIMORFISMO
 Client alexa = new Client(3, "Alexa", "alexasoriano@gmail.com", 500, 'M');
 System.Console.WriteLine(alexa.ShowData());
 alexa.SetBalance(100);
