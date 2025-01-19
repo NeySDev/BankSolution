@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace BankConsole;
 
-public class User
+public class User : Person
 {
     #region Properties
     [JsonProperty]
@@ -66,6 +66,11 @@ public class User
         }
 
         Deposit(quantity);
+    }
+
+    public override string GetName()
+    {
+        return Name;
     }
     #endregion
 }

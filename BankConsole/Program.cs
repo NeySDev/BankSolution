@@ -21,11 +21,19 @@
 
 // ************************
 // HERENCIA / POLIMORFISMO
+// Client alexa = new Client(3, "Alexa", "alexasoriano@gmail.com", 500, 'M');
+// System.Console.WriteLine(alexa.ShowData());
+// alexa.SetBalance(100);
+// System.Console.WriteLine(alexa.ShowData());
+
+// Employee oscar = new Employee(4, "Oscar", "oscarOrtiz@gmail.com", 1000, "TI");
+// oscar.SetBalance(500);
+// System.Console.WriteLine(oscar.ShowData());
+
+// ************************
+// USO DE CLASE ABSTRACTA
 Client alexa = new Client(3, "Alexa", "alexasoriano@gmail.com", 500, 'M');
 System.Console.WriteLine(alexa.ShowData());
 alexa.SetBalance(100);
 System.Console.WriteLine(alexa.ShowData());
-
-Employee oscar = new Employee(4, "Oscar", "oscarOrtiz@gmail.com", 1000, "TI");
-oscar.SetBalance(500);
-System.Console.WriteLine(oscar.ShowData());
+System.Console.WriteLine("Bienvenida de nuevo: " + alexa.GetName());
