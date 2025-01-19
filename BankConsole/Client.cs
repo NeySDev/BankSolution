@@ -1,6 +1,6 @@
 namespace BankConsole;
 
-public class Client : User
+public class Client : User, IPersona
 {
     private char TaxRegime { set; get; }
     public Client(int Id, string Name, string Email, decimal Balance, char TaxRegime) : base(Id, Name, Email, Balance)
@@ -19,5 +19,15 @@ public class Client : User
     public override string ShowData()
     {
         return base.ShowData() + $"\nRegimen Fiscal: {this.TaxRegime}";
+    }
+
+    public string GetName()
+    {
+        return Name + "!";
+    }
+
+    public string GetCountry()
+    {
+        return "México";
     }
 }
