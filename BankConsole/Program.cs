@@ -32,8 +32,18 @@
 
 // ************************
 // USO DE CLASE ABSTRACTA
+// Client alexa = new Client(3, "Alexa", "alexasoriano@gmail.com", 500, 'M');
+// System.Console.WriteLine(alexa.ShowData());
+// alexa.SetBalance(100);
+// System.Console.WriteLine(alexa.ShowData());
+// System.Console.WriteLine("Bienvenida de nuevo: " + alexa.GetName());
+
+// ************************
+// CAMBIOS EN EL PROYECTO
+User nelson = new User(1, "Nelson", "nelsonortiz102@gmail.com", 100);
+Employee yureli = new Employee(2, "Yureli", "yureliortiz@gmail.com", 100, "TI");
 Client alexa = new Client(3, "Alexa", "alexasoriano@gmail.com", 500, 'M');
-System.Console.WriteLine(alexa.ShowData());
-alexa.SetBalance(100);
-System.Console.WriteLine(alexa.ShowData());
-System.Console.WriteLine("Bienvenida de nuevo: " + alexa.GetName());
+
+Storage.AddUser(nelson);
+Storage.AddUser(yureli);
+Storage.AddUser(alexa);

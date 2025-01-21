@@ -18,12 +18,16 @@ public class User
     #endregion
 
     #region Constructors
+    public User()
+    {
+
+    }
     public User(int Id, string Name, string Email, decimal Balance)
     {
         this.Id = Id;
         this.Name = Name;
         this.Email = Email;
-        SetBalance(Balance);
+        this.Balance = Balance;
         this.RegisterDate = DateTime.Now;
     }
     #endregion
@@ -31,7 +35,7 @@ public class User
     #region Methods
     public virtual string ShowData()
     {
-        return $"\n======================================\nNombre: {this.Name}\nCorreo: {this.Email}\nSaldo: {this.Balance}\nFecha de registro: {this.RegisterDate.ToShortDateString()}";
+        return $"\n======================================\nID: {this.Id} \nNombre: {this.Name}\nCorreo: {this.Email}\nSaldo: {this.Balance}\nFecha de registro: {this.RegisterDate.ToShortDateString()}";
     }
 
     public string ShowData(string message)
@@ -66,6 +70,11 @@ public class User
         }
 
         Deposit(quantity);
+    }
+
+    public DateTime GetRegisterDate()
+    {
+        return RegisterDate;
     }
     #endregion
 }

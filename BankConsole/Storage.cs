@@ -15,16 +15,18 @@ public static class Storage
             usersInFile = File.ReadAllText(filePath);
         }
 
-        List<User> listUsers = JsonConvert.DeserializeObject<List<User>>(usersInFile);
+        List<object> listUsers = JsonConvert.DeserializeObject<List<object>>(usersInFile);
 
         if (listUsers == null)
         {
-            listUsers = new List<User>();
+            listUsers = new List<object>();
         }
 
         listUsers.Add(user);
 
-        string json = JsonConvert.SerializeObject(listUsers);
+        JsonSerializerSettings settings = new JsonSerializerSettings { Formatting = Formatting.Indented };
+
+        string json = JsonConvert.SerializeObject(listUsers, settings);
 
         File.WriteAllText(filePath, json);
     }

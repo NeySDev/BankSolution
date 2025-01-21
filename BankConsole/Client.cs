@@ -3,9 +3,13 @@ namespace BankConsole;
 public class Client : User, IPersona
 {
     private char TaxRegime { set; get; }
+
+    public Client() { }
+
     public Client(int Id, string Name, string Email, decimal Balance, char TaxRegime) : base(Id, Name, Email, Balance)
     {
         this.TaxRegime = TaxRegime;
+        SetBalance(Balance);
     }
 
     public override void SetBalance(decimal amount)
