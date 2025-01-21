@@ -40,10 +40,21 @@
 
 // ************************
 // CAMBIOS EN EL PROYECTO
-User nelson = new User(1, "Nelson", "nelsonortiz102@gmail.com", 100);
-Employee yureli = new Employee(2, "Yureli", "yureliortiz@gmail.com", 100, "TI");
-Client alexa = new Client(3, "Alexa", "alexasoriano@gmail.com", 500, 'M');
+// User nelson = new User(1, "Nelson", "nelsonortiz102@gmail.com", 100);
+// Employee yureli = new Employee(2, "Yureli", "yureliortiz@gmail.com", 100, "TI");
+// Client alexa = new Client(3, "Alexa", "alexasoriano@gmail.com", 500, 'M');
 
-Storage.AddUser(nelson);
-Storage.AddUser(yureli);
-Storage.AddUser(alexa);
+// Storage.AddUser(nelson);
+// Storage.AddUser(yureli);
+// Storage.AddUser(alexa);
+
+// *************************
+// ARGUMENTOS DE LA APLICACION
+if (args.Length == 0)
+{
+    System.Console.WriteLine("Enviar correo ...");
+}
+else
+{
+    System.Console.WriteLine($"Argumentos: {args[0]} , {args[1]} , {args[2]}");
+}
