@@ -1,7 +1,10 @@
+using Newtonsoft.Json;
+
 namespace BankConsole;
 
 public class Employee : User, IPersona
 {
+    [JsonProperty]
     private string Department { set; get; }
 
     public Employee() { }

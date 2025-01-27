@@ -1,7 +1,10 @@
+using Newtonsoft.Json;
+
 namespace BankConsole;
 
 public class Client : User, IPersona
 {
+    [JsonProperty]
     private char TaxRegime { set; get; }
 
     public Client() { }
