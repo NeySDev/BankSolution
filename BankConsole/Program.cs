@@ -1,4 +1,5 @@
-﻿using BankConsole;
+﻿using System.Runtime.InteropServices;
+using BankConsole;
 
 // ********************
 // CLASES
@@ -72,12 +73,111 @@
 
 // *********************
 // ENVIAR CORREO
+// if (args.Length == 0)
+// {
+//     EmailService.SendMail();
+//     System.Console.WriteLine("Correo enviado.");
+// }
+// else
+// {
+//     System.Console.WriteLine("En mantenimiento: 404");
+// }
+
+// **********************
+// AGREGAR USUARIOS VIA TERMINAL
 if (args.Length == 0)
 {
     EmailService.SendMail();
-    System.Console.WriteLine("Correo enviado.");
 }
 else
 {
-    System.Console.WriteLine("En mantenimiento: 404");
+    ShowMenu();
+}
+
+static void ShowMenu()
+{
+    System.Console.Clear();
+
+    System.Console.WriteLine("Selecciona una opción:");
+    System.Console.WriteLine("1 - Crear un Usuario nuevo.");
+    System.Console.WriteLine("2 - Eliminar un Usuario existente.");
+    System.Console.WriteLine("3 - Salir.");
+
+    int option = 0;
+
+    do
+    {
+        string input = Console.ReadLine();
+
+        if (!int.TryParse(input, out option))
+        {
+            System.Console.WriteLine("Debes ingresar un número (1, 2 o 3).");
+        }
+        else if (option > 3)
+        {
+            System.Console.WriteLine("Debes ingresar un número (1, 2 o 3).");
+        }
+
+    } while (option == 0 || option > 3);
+
+    switch (option)
+    {
+        case 1:
+            CreateUser();
+            break;
+        case 2:
+            DeleteUser();
+            break;
+        default:
+            Environment.Exit(0);
+            break;
+    }
+}
+
+static void CreateUser()
+{
+    System.Console.Clear();
+    System.Console.WriteLine("Ingresa la información del usuario:");
+
+    System.Console.Write("ID: ");
+    int id = int.Parse(Console.ReadLine());
+
+    System.Console.Write("Nombre: ");
+    string name = Console.ReadLine();
+
+    System.Console.Write("Email: ");
+    string email = Console.ReadLine();
+
+    System.Console.Write("Saldo: ");
+    decimal balance = decimal.Parse(Console.ReadLine());
+
+    System.Console.Write("Escribe: 'c' si el usuario es Cliente, 'e' si es Empleado: ");
+    char userType = char.Parse(Console.ReadLine());
+
+    User newUser;
+    if (userType.Equals('c'))
+    {
+        System.Console.Write("Regimen Fiscal: ");
+        char taxRegime = char.Parse(Console.ReadLine());
+
+        newUser = new Client(id, name, email, balance, taxRegime);
+    }
+    else
+    {
+        System.Console.Write("Departamento: ");
+        string department = Console.ReadLine();
+
+        newUser = new Employee(id, name, email, balance, department);
+    }
+
+    Storage.AddUser(newUser);
+
+    System.Console.WriteLine("Usuario creado.");
+    Thread.Sleep(2000);
+    ShowMenu();
+}
+
+static void DeleteUser()
+{
+
 }
