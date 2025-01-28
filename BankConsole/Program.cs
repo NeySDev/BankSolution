@@ -60,11 +60,24 @@
 // }
 
 // ************************
-Client ana = new Client(4, "Ana Maria", "algo@gmail.com", 100, 'M');
-Storage.AddUser(ana);
-Employee norma = new Employee(5, "Norma Leal", "algo2@gmail.com", 200, "Administración");
-Storage.AddUser(norma);
-foreach (var user in Storage.GetNewUser())
+// OBTENER OBJETOS DE ARCHIVO JSON
+// Client ana = new Client(4, "Ana Maria", "algo@gmail.com", 100, 'M');
+// Storage.AddUser(ana);
+// Employee norma = new Employee(5, "Norma Leal", "algo2@gmail.com", 200, "Administración");
+// Storage.AddUser(norma);
+// foreach (var user in Storage.GetNewUser())
+// {
+//     System.Console.WriteLine(user.ShowData());
+// }
+
+// *********************
+// ENVIAR CORREO
+if (args.Length == 0)
 {
-    System.Console.WriteLine(user.ShowData());
+    EmailService.SendMail();
+    System.Console.WriteLine("Correo enviado.");
+}
+else
+{
+    System.Console.WriteLine("En mantenimiento: 404");
 }
