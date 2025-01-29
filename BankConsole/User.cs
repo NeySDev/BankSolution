@@ -76,5 +76,10 @@ public class User
     {
         return RegisterDate;
     }
+
+    public int GetID()
+    {
+        return Id;
+    }
     #endregion
 }

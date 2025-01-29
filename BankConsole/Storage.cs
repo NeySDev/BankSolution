@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+using System.Text.Json.Nodes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -69,5 +71,30 @@ public static class Storage
         var newUserslist = listUsers.Where(user => user.GetRegisterDate().Date.Equals(DateTime.Today)).ToList();
 
         return newUserslist;
+    }
+
+    public static string DeleteUser(int id)
+    {
+        if (!File.Exists(filePath))
+            return "Error: El archivo no existe.";
+
+        string usersInFile = File.ReadAllText(filePath);
+
+        List<User> listUsers = JsonConvert.DeserializeObject<List<User>>(usersInFile);
+
+        var userToDelete = listUsers.Where(user => user.GetID() == id).SingleOrDefault();
+
+        if (userToDelete == null)
+            return "Error: El usuario no existe.";
+
+        listUsers.Remove(userToDelete);
+
+        JsonSerializerSettings setting = new JsonSerializerSettings { Formatting = Formatting.Indented };
+
+        string json = JsonConvert.SerializeObject(listUsers, setting);
+
+        File.WriteAllText(filePath, json);
+
+        return "Success";
     }
 }

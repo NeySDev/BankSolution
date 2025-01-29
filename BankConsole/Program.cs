@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using BankConsole;
+﻿using BankConsole;
 
 // ********************
 // CLASES
@@ -96,42 +95,51 @@ else
 
 static void ShowMenu()
 {
-    System.Console.Clear();
-
-    System.Console.WriteLine("Selecciona una opción:");
-    System.Console.WriteLine("1 - Crear un Usuario nuevo.");
-    System.Console.WriteLine("2 - Eliminar un Usuario existente.");
-    System.Console.WriteLine("3 - Salir.");
-
-    int option = 0;
-
-    do
+    try
     {
-        string input = Console.ReadLine();
+        System.Console.Clear(); 
+        System.Console.WriteLine("Selecciona una opción:");
+        System.Console.WriteLine("1 - Crear un Usuario nuevo.");
+        System.Console.WriteLine("2 - Eliminar un Usuario existente.");
+        System.Console.WriteLine("3 - Salir.");
 
-        if (!int.TryParse(input, out option))
+        int option = 0;
+
+        do
         {
-            System.Console.WriteLine("Debes ingresar un número (1, 2 o 3).");
-        }
-        else if (option > 3)
+            string input = Console.ReadLine();
+
+            if (!int.TryParse(input, out option))
+            {
+                System.Console.WriteLine("Debes ingresar un número (1, 2 o 3).");
+            }
+            else if (option > 3)
+            {
+                System.Console.WriteLine("Debes ingresar un número (1, 2 o 3).");
+            }
+
+        } while (option == 0 || option > 3);
+
+        switch (option)
         {
-            System.Console.WriteLine("Debes ingresar un número (1, 2 o 3).");
+            case 1:
+                CreateUser();
+                break;
+            case 2:
+                DeleteUser();
+                break;
+            default:
+                Environment.Exit(0);
+                break;
         }
-
-    } while (option == 0 || option > 3);
-
-    switch (option)
-    {
-        case 1:
-            CreateUser();
-            break;
-        case 2:
-            DeleteUser();
-            break;
-        default:
-            Environment.Exit(0);
-            break;
     }
+    catch (System.IO.IOException ex)
+    {
+        System.Console.WriteLine("Error al limpiar la consola: " + ex.Message);
+    }
+
+    Thread.Sleep(2000);
+    ShowMenu();
 }
 
 static void CreateUser()
@@ -179,5 +187,22 @@ static void CreateUser()
 
 static void DeleteUser()
 {
+    System.Console.Clear();
+    System.Console.Write("Ingrese el ID usuario a eliminar:");
 
+    int id = int.Parse(Console.ReadLine());
+
+    string result = Storage.DeleteUser(id);
+
+    if (result.Equals("Success"))
+    {
+        System.Console.WriteLine("Usuario eliminado");
+    }
+    else
+    {
+        System.Console.WriteLine(result);
+    }
+
+    Thread.Sleep(2000);
+    ShowMenu();
 }
